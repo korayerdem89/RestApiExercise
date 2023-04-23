@@ -30,7 +30,7 @@ const renderEpisodes = ({item}) => {
         </TouchableOpacity>
     )
 }
-console.log(episodes[0])
+ 
 
   return (
     <View style={styles.container}>
