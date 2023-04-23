@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Episodes from './src/Episodes';
 import EpisodeDetail from './src/EpisodeDetail';
+import CharacterDetail from './src/CharacterDetail';
 import { NavigationContainer } from '@react-navigation/native';
 const Stack = createStackNavigator();
 
@@ -11,6 +12,7 @@ export default function App() {
     <Stack.Navigator>
     <Stack.Screen name="Episodes" component={Episodes} />
     <Stack.Screen name="EpisodeDetail" component={EpisodeDetail} />
+    <Stack.Screen name="CharacterDetail" component={CharacterDetail} />
   </Stack.Navigator>
   </NavigationContainer>
   );

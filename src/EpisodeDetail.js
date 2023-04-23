@@ -1,8 +1,14 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const EpisodeDetail = ({ route }) => {
+const EpisodeDetail = ({ route, navigation }) => {
   const id = route.params;
   const [episode, setEpisode] = useState([]);
   const [characters, setCharacters] = useState([]);
@@ -36,16 +42,18 @@ const EpisodeDetail = ({ route }) => {
     }
   }, [episode]);
 
-  console.log(characters[1]);
+  const navigateToCharacterDetail = (id) => {
+    navigation.navigate("CharacterDetail", id);
+  };
 
   const renderCharacters = ({ item }) => {
     return (
       <View style={styles.renderContainer}>
-        <Text>{item.name}</Text>
-        <Text>{item.origin.name}</Text>
-        <Text>{item.species}</Text>
-        <Text>{item.status}</Text>
-        <Text>{item.gender}</Text>
+        <TouchableOpacity onPress={() => navigateToCharacterDetail(item.id)}>
+          <>
+            <Text>{item.name}</Text>
+          </>
+        </TouchableOpacity>
       </View>
     );
   };
