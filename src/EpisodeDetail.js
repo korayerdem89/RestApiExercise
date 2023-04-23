@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -36,17 +36,22 @@ const EpisodeDetail = ({ route }) => {
     }
   }, [episode]);
 
+  console.log(characters[1]);
+
   const renderCharacters = ({ item }) => {
     return (
-      <View>
+      <View style={styles.renderContainer}>
+        <Text>{item.name}</Text>
+        <Text>{item.origin.name}</Text>
+        <Text>{item.species}</Text>
+        <Text>{item.status}</Text>
         <Text>{item.gender}</Text>
       </View>
     );
   };
 
-  console.log(characters[0]);
   return (
-    <View>
+    <View style={styles.container}>
       <Text>EpisodeDetail</Text>
       <Text>{episode.name}</Text>
       <Text>{episode.episode}</Text>
@@ -73,3 +78,20 @@ const EpisodeDetail = ({ route }) => {
 };
 
 export default EpisodeDetail;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    marginHorizontal: 10,
+  },
+  renderContainer: {
+    borderWidth: 1,
+    backgroundColor: "#d5d5d5",
+    width: "45%",
+    marginHorizontal: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+    padding: 10,
+  },
+});
